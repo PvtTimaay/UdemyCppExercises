@@ -13,7 +13,7 @@ int main()
     char compare_text2[50]{"ja"};
 
     std::cout << "Please enter any text: ";
-    std::cin >> in_text;
+    std::cin >> in_text; // Hello im Tim and i learning Cpp
 
     std::cout << "to_upper_case: " << to_upper_case(in_text) << '\n';
     std::cout << "to_lower_case: " << to_lower_case(in_text) << '\n';
