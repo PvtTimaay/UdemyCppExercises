@@ -7,17 +7,27 @@
 void remove_duplicates(std::int32_t *array, std::size_t &length)
 { //        {1, 1, 2, 3, 3, 4};
 
-    std::int32_t *tempAlloc = new std::int32_t[length];
+
+    for (std::size_t i = 0; i < length; i++)
+    {
+        if (array[0] == array[1])
+        {
+            rotate_left(array, length);
+            array[length - 1] = 0;
+        }
+        else
+            rotate_left(array, length);
+    }
 
 
-    while (array[0] == array[1])
+    /* while (array[0] == array[1])
     {
         tempAlloc = array;
         rotate_left(array, length);
 
         //array[length - 1] = length;
-    }
-    std::cout << "Alloc: -> " << tempAlloc << " <- " << *tempAlloc << std::endl;
+    }*/
+    //std::cout << "Alloc: -> " << tempAlloc << " <- " << *tempAlloc << std::endl;
 }
 
 void rotate_left(std::int32_t *array, std::size_t length)
