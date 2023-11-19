@@ -23,9 +23,9 @@ struct VehicleType
 struct NeighborVehiclesType
 {
     // Array for nearby vehicles on left lane (2 vehicles in total)
-    VehicleType NearbyVehLeft[2];
+    VehicleType NearbyVehLeft[NUM_VEHICLES_ON_LANE];
     // Array for nearby vehicles on center lane (2 vehicles in total)
-    VehicleType NearbyVehCenter[2];
+    VehicleType NearbyVehCenter[NUM_VEHICLES_ON_LANE];
     // Array for nearby vehicles on right lane (2 vehicles in total)
-    VehicleType NearbyVehRight[2];
+    VehicleType NearbyVehRight[NUM_VEHICLES_ON_LANE];
 };

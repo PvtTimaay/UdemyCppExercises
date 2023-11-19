@@ -13,11 +13,13 @@ public:
         size = 0;
         queue = new int[100];
     }
+
     void add(int data)
     {
         queue[size] = data;
         size++;
     }
+
     void remove()
     {
         if (size == 0)
@@ -34,7 +36,8 @@ public:
             size--;
         }
     }
-    virtual void print() const
+
+    virtual void print()
     {
         if (size == 0)
         {
@@ -47,12 +50,14 @@ public:
         }
         cout << endl;
     }
-    friend ostream &operator<<(ostream &os, const Queue &q)
+
+    friend ostream &operator<<(ostream &os, Queue &q)
     {
         q.print();
         return os;
     }
-    Queue operator+(const Queue &obj) const
+
+    Queue operator+(const Queue &obj)
     {
         Queue res;
         for (int i = 0; i < this->size; i++)
@@ -67,11 +72,10 @@ public:
     }
 };
 
-//your code goes here
 class Queue2 : public Queue
 {
 public:
-    void print() const override
+    void print() override
     {
         if (size == 0)
         {
