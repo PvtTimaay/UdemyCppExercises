@@ -65,7 +65,7 @@ int calculate_row_index_for_distance(float distance_m)
     // Adjust as needed based on the specific requirements of your simulation
 
     // Calculate the row index based on the distance
-    int rowIndex = static_cast<int>((100.0F - distance_m) / 20.0F);
+    int rowIndex = static_cast<int>((VIEW_RANGE_M - distance_m) / 20.0F);
 
     // Ensure the rowIndex is within the valid range
     rowIndex = std::max(0, std::min(rowIndex, 10));
