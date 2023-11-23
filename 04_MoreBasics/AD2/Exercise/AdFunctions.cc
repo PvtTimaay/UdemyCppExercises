@@ -58,10 +58,101 @@ void print_neighbor_vehicles(const NeighborVehiclesType &vehicles)
     print_vehicle(vehicles.vehicles_right_lane[1]);
 }
 
-void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &vehicles)
+
+int calculate_row_index_for_distance(float distance_m)
 {
+    // Assuming each row corresponds to a distance interval of 20 units
+    // Adjust as needed based on the specific requirements of your simulation
+
+    // Calculate the row index based on the distance
+    int rowIndex = static_cast<int>((100.0F - distance_m) / 20.0F);
+
+    // Ensure the rowIndex is within the valid range
+    rowIndex = std::max(0, std::min(rowIndex, 10));
+
+    return rowIndex;
 }
 
-void compute_future_state(const VehicleType &ego_vehicle, NeighborVehiclesType &vehicles, const float seconds)
+
+void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &vehicles)
+{
+    const int rows = 11;    // Zeilen (Abstandsmarkierungen)
+    const int columns = 24; // Spalten (Spuren)
+
+    char arrayz[rows][columns];
+    int distAnd = 100;
+
+    // Initialisierung des Arrays mit Leerzeichen
+    for (int i = 0; i < rows; i++)
+    {
+        for (int j = 0; j < columns; j++)
+        {
+            arrayz[i][j] = ' ';
+        }
+    }
+
+    // Markierung der Spuren
+    for (int j = 0; j < columns; j += 6)
+    {
+        for (int i = 0; i < rows; i++)
+        {
+            arrayz[i][j] = '|';     // Rand der Spur
+            arrayz[i][j + 1] = ' '; // Leerzeichen in der Spur
+            arrayz[i][j + 2] = ' '; // Leerzeichen in der Spur
+        }
+    }
+
+    // Setzen Sie das eigene Fahrzeugzeichen basierend auf der Lane-Eigenschaft
+    int vehicleColumn = 0;
+    if (ego_vehicle.lane == LaneAssociationType::LEFT)
+    {
+        vehicleColumn = 3; // Spalte für linke Spur
+    }
+    else if (ego_vehicle.lane == LaneAssociationType::CENTER)
+    {
+        vehicleColumn = 9; // Spalte für mittlere Spur
+    }
+    else if (ego_vehicle.lane == LaneAssociationType::RIGHT)
+    {
+        vehicleColumn = 15; // Spalte für rechte Spur
+    }
+
+    // Setzen Sie das Fahrzeugzeichen in die erste Zeile
+    arrayz[5][vehicleColumn] = 'E';
+
+    // Setzen der Fahrzeugzeichen der anderen
+    for (int i = 0; i < 2; i++)
+    {
+        // Left lane vehicles
+        int leftLaneIndex = calculate_row_index_for_distance(vehicles.vehicles_left_lane[i].distance_m);
+        arrayz[leftLaneIndex][3] = 'V';
+
+        // Center lane vehicles
+        int centerLaneIndex = calculate_row_index_for_distance(vehicles.vehicles_center_lane[i].distance_m);
+        arrayz[centerLaneIndex][9] = 'V';
+
+        // Right lane vehicles
+        int rightLaneIndex = calculate_row_index_for_distance(vehicles.vehicles_right_lane[i].distance_m);
+        arrayz[rightLaneIndex][15] = 'V';
+    }
+
+    // Setzen Sie die Zahlen für "L", "C" und "R" in die erste Zeile
+    std::cout << "\t    L\t  C     R \n";
+    // Ausgabe des Arrays
+    for (int i = 0; i < rows; i++)
+    {
+        std::cout << distAnd << " \t ";
+        distAnd -= 20;
+        for (int j = 0; j < columns; j++)
+        {
+            std::cout << arrayz[i][j];
+        }
+        std::cout << std::endl;
+    }
+}
+
+
+/*void compute_future_state(const VehicleType &ego_vehicle, NeighborVehiclesType &vehicles, const float seconds)
 {
 }
+*/

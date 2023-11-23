@@ -12,9 +12,9 @@ void print_vehicle(const VehicleType &vehicle);
 
 void print_neighbor_vehicles(const NeighborVehiclesType &vehicles);
 
-void print_scene(const VehicleType &ego_vehicle,
-                 const NeighborVehiclesType &vehicles);
+void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &vehicles);
 
-void compute_future_state(const VehicleType &ego_vehicle,
+/*void compute_future_state(const VehicleType &ego_vehicle,
                           NeighborVehiclesType &vehicles,
                           const float seconds);
+*/

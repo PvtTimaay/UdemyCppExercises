@@ -2,30 +2,40 @@
 
 int main()
 {
-    char arrayz[11][8];
+    const int rows = 11;    // Zeilen (Abstandsmarkierungen)
+    const int columns = 24; // Spalten (Spuren)
 
-    // Initialisierung des Arrays mit '|'
-    for (int i = 0; i < 11; i++)
-    {
-        for (int j = 0; j < 8; j++)
-        {
-            arrayz[i][j] = '|';
-        }
-    }
+    char arrayz[rows][columns];
+    int distAnd = 100;
 
-    // Überschreiben der inneren Elemente mit Leerzeichen
-    for (int i = 0; i < 11; i++)
+    // Initialisierung des Arrays mit Leerzeichen
+    for (int i = 0; i < rows; i++)
     {
-        for (int j = 1; j < 7; j++)
+        for (int j = 0; j < columns; j++)
         {
             arrayz[i][j] = ' ';
         }
     }
 
-    // Ausgabe des Arrays
-    for (int i = 0; i < 11; i++)
+    // Markierung der Spuren
+    for (int j = 0; j < columns; j += 6)
     {
-        for (int j = 0; j < 8; j++)
+        for (int i = 0; i < rows; i++)
+        {
+            arrayz[i][j] = '|';     // Rand der Spur
+            arrayz[i][j + 1] = ' '; // Leerzeichen in der Spur
+            arrayz[i][j + 2] = ' '; // Leerzeichen in der Spur
+        }
+    }
+
+    // Setzen Sie die Zahlen für "L", "C" und "R" in die erste Zeile
+    std::cout << "\t    L\t  C     R \n";
+    // Ausgabe des Arrays
+    for (int i = 0; i < rows; i++)
+    {
+        std::cout << distAnd << " \t ";
+        distAnd -= 20;
+        for (int j = 0; j < columns; j++)
         {
             std::cout << arrayz[i][j];
         }

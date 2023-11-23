@@ -16,7 +16,7 @@ int main()
     print_vehicle(ego_vehicle);
     print_neighbor_vehicles(vehicles);
 
-    print_scene();
+    print_scene(ego_vehicle, vehicles);
 
     return 0;
 }
