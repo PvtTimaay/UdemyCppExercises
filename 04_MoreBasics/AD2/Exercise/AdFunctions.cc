@@ -121,7 +121,7 @@ void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &veh
     arrayz[5][vehicleColumn] = 'E';
 
     // Setzen der Fahrzeugzeichen der anderen
-    for (int i = 0; i < 2; i++)
+    for (std::size_t i = 0; i < NUM_VEHICLES_ON_LANE; i++)
     {
         // Left lane vehicles
         int leftLaneIndex = calculate_row_index_for_distance(vehicles.vehicles_left_lane[i].distance_m);
