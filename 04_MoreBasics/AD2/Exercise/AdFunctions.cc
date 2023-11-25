@@ -152,7 +152,19 @@ void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &veh
 }
 
 
-/*void compute_future_state(const VehicleType &ego_vehicle, NeighborVehiclesType &vehicles, const float seconds)
+void compute_future_state(const VehicleType &ego_vehicle, NeighborVehiclesType &vehicles, const float seconds)
 {
+    for (std::size_t i = 0; i < NUM_VEHICLES_ON_LANE; i++)
+    {
+        std::cout << std::endl;
+        vehicles.vehicles_left_lane[i].distance_m =
+            vehicles.vehicles_left_lane[i].distance_m -
+            (seconds * ego_vehicle.speed_mps - seconds * vehicles.vehicles_left_lane[i].speed_mps);
+        vehicles.vehicles_center_lane[i].distance_m =
+            vehicles.vehicles_center_lane[i].distance_m -
+            (seconds * ego_vehicle.speed_mps - seconds * vehicles.vehicles_center_lane[i].speed_mps);
+        vehicles.vehicles_right_lane[i].distance_m =
+            vehicles.vehicles_right_lane[i].distance_m -
+            (seconds * ego_vehicle.speed_mps - seconds * vehicles.vehicles_right_lane[i].speed_mps);
+    }
 }
-*/

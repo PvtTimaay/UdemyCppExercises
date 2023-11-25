@@ -18,5 +18,24 @@ int main()
 
     print_scene(ego_vehicle, vehicles);
 
+    std::cout << "Compute forward (1sec)?: ";
+    char input;
+    std::cin >> input;
+    while (input == 'y')
+    {
+        if (std::cin.fail())
+        {
+            std::cout << "Invalid input, please a literal";
+        }
+        else
+        {
+            compute_future_state(ego_vehicle, vehicles, 1);
+            print_scene(ego_vehicle, vehicles);
+        }
+        std::cout << "Compute forward (1sec)?: ";
+        std::cin >> input;
+    }
+
+
     return 0;
 }
