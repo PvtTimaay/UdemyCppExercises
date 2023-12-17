@@ -57,7 +57,7 @@ void print_neighbor_vehicles(const NeighborVehiclesType &vehicles)
     print_vehicle(vehicles.vehicles_right_lane[0]);
     print_vehicle(vehicles.vehicles_right_lane[1]);
 }
-
+float offset_A = 20; //TODO what the fuck, i want to change this one value to magnified the whole szene!
 
 int calculate_row_index_for_distance(float distance_m)
 {
@@ -65,6 +65,7 @@ int calculate_row_index_for_distance(float distance_m)
     // Adjust as needed based on the specific requirements of your simulation
 
     // Calculate the row index based on the distance
+
     int rowIndex = static_cast<int>((VIEW_RANGE_M - distance_m) / 20.0F);
 
     // Ensure the rowIndex is within the valid range
@@ -81,7 +82,6 @@ void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &veh
 
     char arrayz[rows][columns];
     int distAnd = 100;
-
     // Initialisierung des Arrays mit Leerzeichen
     for (int i = 0; i < rows; i++)
     {
