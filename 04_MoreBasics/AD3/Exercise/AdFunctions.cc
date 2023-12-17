@@ -129,6 +129,9 @@ void print_scene(const VehicleType &ego_vehicle, const NeighborVehiclesType &veh
 
         std::cout << i << "\t| " << left_string << " | " << center_string << " | " << right_string << " | \n";
     }
+    print_vehicle_speed(ego_vehicle, "E");
+    /*std::cout << "(" << ego_vehicle.speed_mps << " mps"
+              << ")" << '\n';*/
 }
 
 void compute_future_distance(VehicleType &vehicle, const float ego_driven_distance, const float seconds)
@@ -151,8 +154,26 @@ void compute_future_state(const VehicleType &ego_vehicle, NeighborVehiclesType &
 
 void decrease_speed(VehicleType &ego_vehicle)
 {
+    const auto decrease_mps = ego_vehicle.speed_mps * LONGITUDINAL_DIFFERENCE_PERCENTAGE;
+    if ((ego_vehicle.speed_mps - decrease_mps) >= 0.0f)
+    {
+        ego_vehicle.speed_mps -= decrease_mps;
+    }
 }
 
 void longitudinal_control(const VehicleType &front_vehicle, VehicleType &ego_vehicle)
 {
+    const auto minimal_distance_m = mps_to_kph(ego_vehicle.speed_mps) / 2;
+    const auto front_distance_m = front_vehicle.distance_m;
+
+    if (front_vehicle.distance_m < 0.0f)
+    {
+        return;
+    }
+
+
+    if (front_vehicle.distance_m < mps_to_kph(ego_vehicle.speed_mps) / 2)
+    {
+        decrease_speed(ego_vehicle);
+    }
 }
