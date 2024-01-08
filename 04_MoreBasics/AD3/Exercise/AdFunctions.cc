@@ -163,6 +163,7 @@ void decrease_speed(VehicleType &ego_vehicle)
 
 void longitudinal_control(const VehicleType &front_vehicle, VehicleType &ego_vehicle)
 {
+
     const auto minimal_distance_m = mps_to_kph(ego_vehicle.speed_mps) / 2;
     const auto front_distance_m = front_vehicle.distance_m;
 
