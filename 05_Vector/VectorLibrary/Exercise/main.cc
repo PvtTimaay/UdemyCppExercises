@@ -17,7 +17,7 @@ int main()
     remove_duplicates(vector);
     print_vector(vector);
 
-    std::cout << "rotate_left: " << '\n';
+    /*std::cout << "rotate_left: " << '\n';
     rotate_left(vector);
     print_vector(vector);
 
@@ -25,7 +25,7 @@ int main()
     rotate_right(vector);
     print_vector(vector);
 
-    test_cases();
+    test_cases();*/
 
     return 0;
 }
