@@ -11,21 +11,6 @@ void remove_duplicates(std::vector<std::int32_t> &vector)
     std::sort(vector.begin(), vector.end());
     auto last = std::unique(vector.begin(), vector.end());
     vector.erase(last, vector.end());
-
-    /*    std::sort(vector.begin(), vector.end());
-
-    for (size_t i = 0; i < vector.size() - 1; i++)
-    {
-        if (vector[0] == vector[1]) // {1, 1, 2, 3, 3, 4};
-        {
-            rotate_left(vector);
-            vector.pop_back();
-        }
-        else
-        {
-            rotate_left(vector);
-        }
-    }*/
 }
 
 void rotate_left(std::vector<std::int32_t> &vector)

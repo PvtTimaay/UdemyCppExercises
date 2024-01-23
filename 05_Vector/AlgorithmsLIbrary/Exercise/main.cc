@@ -10,14 +10,15 @@ void test_cases();
 
 int main()
 {
-    const auto vector = std::vector<std::int32_t>{3, 1, 4, 1, 5, 9, 2, 6};
+    const auto vector = std::vector<std::int32_t>{3, 1, 4, 1, 5, 9, 2, 6, 5, 5, 5, 5};
 
     std::cout << std::boolalpha;
     std::cout << "all_of: " << all_of(vector, 5) << '\n';
     std::cout << "any_of: " << any_of(vector, 5) << '\n';
     std::cout << "none_of: " << none_of(vector, 5) << '\n';
+    std::cout << "count_of: " << count(vector, 5) << '\n';
 
-    test_cases();
+    //test_cases();
 
     return 0;
 }
