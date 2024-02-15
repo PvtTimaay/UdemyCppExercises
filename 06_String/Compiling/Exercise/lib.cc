@@ -10,7 +10,7 @@ bool is_source_file(const fs::path &file)
     {
         return true;
     }
-
+    return false;
 }
 
 std::vector<fs::path> get_source_files_in_dir(const fs::path &dir)
