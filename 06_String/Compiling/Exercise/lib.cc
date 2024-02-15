@@ -15,7 +15,7 @@ bool is_source_file(const fs::path &file)
 
 std::vector<fs::path> get_source_files_in_dir(const fs::path &dir)
 {
-    if (is_source_file(dir))
+    if (dir.exists() && dir.is_directory())
     {
         std::vector<fs::path> tempPathVec;
         tempPathVec.push_back(dir);
