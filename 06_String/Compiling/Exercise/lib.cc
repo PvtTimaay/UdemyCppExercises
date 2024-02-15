@@ -6,7 +6,7 @@
 
 bool is_source_file(const fs::path &file)
 {
-    if (file.extension() == ".cc" || ".cpp" || ".h" || ".hpp")
+    if (file.extension() == ".cc" || file.extension() == ".cpp" || file.extension() == ".h" || file.extension() == ".hpp")
     {
         return true;
     }
@@ -15,13 +15,20 @@ bool is_source_file(const fs::path &file)
 
 std::vector<fs::path> get_source_files_in_dir(const fs::path &dir)
 {
-    if (dir.exists() && dir.is_directory())
+    if (std::filesystem::exists(dir) && std::filesystem::is_directory(dir))
     {
         std::vector<fs::path> tempPathVec;
-        tempPathVec.push_back(dir);
+        for (auto &entry : fs::directory_iterator(dir))
+        {
+            if (entry.is_regular_file() && is_source_file(entry.path()))
+            {
+                tempPathVec.push_back(entry);
+            }
+        }
         return tempPathVec;
     }
     std::cout << "no C++ source file" << std::endl;
+    std::vector<std::filesystem::path>();
 }
 
 void compile_file(fs::path source_file)
