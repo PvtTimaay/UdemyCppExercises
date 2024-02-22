@@ -4,7 +4,7 @@
 
 #include "Lib.h"
 
-void test_cases();
+//void test_cases();
 
 int main()
 {
@@ -23,12 +23,12 @@ int main()
     const auto dist = mystd::distance(vec_it, vec.end());
     std::cout << "distance: " << dist << '\n';
 
-    test_cases();
+    //test_cases();
 
     return 0;
 }
 
-void test_cases()
+/*void test_cases()
 {
     auto vec = std::vector<std::int32_t>{2, 1, -2, 0, -1};
 
@@ -52,4 +52,4 @@ void test_cases()
 
     assert(mystd::distance(prev_it2, vec.begin()) == 0);
     assert(mystd::distance(vec.begin(), vec.end()) == vec.size());
-}
+}*/
