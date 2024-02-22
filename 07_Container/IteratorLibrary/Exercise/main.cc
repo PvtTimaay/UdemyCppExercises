@@ -20,7 +20,7 @@ int main()
     mystd::advance(vec_it, 2);
     std::cout << "advance: " << *vec_it << '\n';
 
-    const auto dist = mystd::distance(vec_it, vec.end());
+    const auto dist = mystd::distance(vec_it, vec.end()+1);
     std::cout << "distance: " << dist << '\n';
 
     //test_cases();
