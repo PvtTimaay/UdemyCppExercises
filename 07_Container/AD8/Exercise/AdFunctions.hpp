@@ -1,6 +1,7 @@
 #pragma once
 
 #include <cstdint>
+#include <string_view>
 
 #include "AdTypes.hpp"
 
@@ -15,7 +16,7 @@ void print_neighbor_vehicles(const NeighborVehiclesType &vehicles);
 void print_scene(const VehicleType &ego_vehicle,
                  const NeighborVehiclesType &vehicles);
 
-void print_vehicle_speed(const VehicleType &vehicle, const char *name);
+void print_vehicle_speed(const VehicleType &vehicle, std::string_view name);
 
 void compute_future_distance(VehicleType &vehicle,
                              const float ego_driven_distance,
@@ -28,8 +29,9 @@ void compute_future_state(const VehicleType &ego_vehicle,
 void longitudinal_control(const VehicleType &front_vehicle,
                           VehicleType &ego_vehicle);
 
-const VehicleType *get_vehicle_array(const LaneAssociationType lane,
-                                     const NeighborVehiclesType &vehicles);
+const std::array<VehicleType, NUM_VEHICLES_ON_LANE> &get_vehicle_array(
+    const LaneAssociationType lane,
+    const NeighborVehiclesType &vehicles);
 
 LaneAssociationType get_lane_change_request(
     const VehicleType &ego_vehicle,
