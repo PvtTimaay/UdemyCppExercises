@@ -7,7 +7,6 @@
 
 double Shape::midpoint_distance(const Shape *other) const
 {
-    return get_distance(int a, int b, int c, int d);
 }
 
 Circle::Circle(int a, int b, int c)
@@ -15,4 +14,12 @@ Circle::Circle(int a, int b, int c)
     x_midpoint = a;
     y_midpoint = b;
     radius = c;
+}
+
+double Circle::get_area() const
+{
+}
+
+std::pair<int, int> Circle::get_midpoint() const
+{
 }
