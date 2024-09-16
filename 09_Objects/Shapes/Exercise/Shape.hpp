@@ -27,7 +27,7 @@ struct Circle : Shape
 struct Rectangle : Shape
 {
     Rectangle() = default;
-    Rectangle(int a, int b, int c, int d) : x1(a), y1(b), x2(c), y2(d){}
+    Rectangle(int a, int b, int c, int d);
     ~Rectangle() noexcept = default;
 
     virtual double get_area() const final;
