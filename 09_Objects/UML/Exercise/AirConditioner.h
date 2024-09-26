@@ -3,6 +3,9 @@
 #include <random>
 #include <type_traits>
 
+float lower_limit {-20};
+float upper_limit {45};
+
 template <typename T>
 T get_rand_float(const T &lower_limit, const T &upper_limit)
 {
@@ -19,4 +22,13 @@ T get_rand_float(const T &lower_limit, const T &upper_limit)
 
 class AirConditioner
 {
+    public:
+        int measure();
+        int activate(int curr_temp);
+
+    private:
+        bool heat(int duration);
+        bool cool(int duration);
+        float curr_temp;
+        float target_temp {20};
 };
