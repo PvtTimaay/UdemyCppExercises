@@ -22,7 +22,9 @@ T get_rand_float(const T &lower_limit, const T &upper_limit)
 class AirConditioner
 {
     public:
+        AirConditioner() = default;
         AirConditioner(int a) : target_temp{a}{}
+        ~AirConditioner() = default;
         int measure();
         int activate(int curr_temp);
 
