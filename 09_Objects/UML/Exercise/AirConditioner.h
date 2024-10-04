@@ -27,8 +27,8 @@ class AirConditioner
         int activate(int curr_temp);
 
     private:
-        bool heat(int duration);
-        bool cool(int duration);
+        bool heat();
+        bool cool();
         float curr_temp;
         float target_temp {20}; // <<-- target_temp: float Default value is 20-degree celsius
 };

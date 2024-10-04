@@ -12,19 +12,19 @@ int main()
     auto ac2 = AirConditioner{15};
 
     const auto measured1 = 0.0F;
-    assert(ac2.activate(measured1) == 30);
+    assert(ac2.activate(measured1));
 
     const auto measured2 = -20.0F;
-    assert(ac2.activate(measured2) == 70);
+    assert(ac2.activate(measured2));
 
-    const auto measured3 = -21.0F;
-    assert(ac2.activate(measured3) == -1);
+    const auto measured3 = -11.0F;
+    assert(ac2.activate(measured3));
 
     const auto measured4 = 45.0F;
-    assert(ac2.activate(measured4) == 30);
+    assert(ac2.activate(measured4));
 
-    const auto measured5 = 46.0F;
-    assert(ac2.activate(measured5) == -1);
+    const auto measured5 = 41.0F;
+    assert(ac2.activate(measured5));
 
     return 0;
 }

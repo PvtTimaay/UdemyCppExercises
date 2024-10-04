@@ -20,8 +20,8 @@ int AirConditioner::activate(int curr_temp)
             int evaTime = target_temp - curr_temp;
             evaTime *= 2;
             std::cout << "calls heat methode\n";
-            std::cout << "heating needs " << evaTime << " minutes to finish\n";
-            heat(evaTime);
+            std::cout << "heating needs " << static_cast<unsigned int>(evaTime) << " minutes to finish\n";
+            heat();
 
             return evaTime;
         }
@@ -29,8 +29,8 @@ int AirConditioner::activate(int curr_temp)
         {
             int evaTimeCool = target_temp - curr_temp;
             std::cout << "calls cool methode\n";
-            std::cout << "cooling needs " << evaTimeCool << " minutes to finish\n";
-            cool(evaTimeCool);
+            std::cout << "cooling needs " << static_cast<unsigned int>(evaTimeCool) << " minutes to finish\n";
+            cool();
 
             return evaTimeCool;
         }
@@ -42,7 +42,7 @@ int AirConditioner::activate(int curr_temp)
     }
 }
 
-bool AirConditioner::heat(int duration)
+bool AirConditioner::heat()
 {
     std::cout << "target temp is " << target_temp << '\n';
     while (target_temp != curr_temp)
@@ -56,7 +56,7 @@ bool AirConditioner::heat(int duration)
     return true;
 }
 
-bool AirConditioner::cool(int duration)
+bool AirConditioner::cool()
 {
     std::cout << "target temp is " << target_temp << '\n';
     while (target_temp != curr_temp)
