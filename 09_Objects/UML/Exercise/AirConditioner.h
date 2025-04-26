@@ -1,7 +1,7 @@
 #pragma once
 
-#include <random>
-#include <type_traits>
+#include <random> // for std::random_device, std::mt19937_64, std::uniform_int_distribution
+#include <type_traits> // for std::is_floating_point_v
 
 
 
@@ -25,8 +25,8 @@ class AirConditioner
         AirConditioner() = default;
         AirConditioner(int a) : target_temp{a}{}
         ~AirConditioner() = default;
-        int measure();
-        int activate(int curr_temp);
+        float measure();
+        int activate(float curr_temp);
 
     private:
         bool heat();

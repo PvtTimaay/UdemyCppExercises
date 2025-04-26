@@ -1,9 +1,9 @@
-#include <iostream>
-#include <chrono>
-#include <thread>
-#include "AirConditioner.h"
+#include <iostream> // for std::cout, std::cerr
+#include <chrono> // for std::chrono::seconds
+#include <thread> // for std::this_thread::sleep_for
+#include "AirConditioner.h" // for AirConditioner class
 
-int AirConditioner::measure()
+float AirConditioner::measure()
 {
     float lower_limit {-20};
     float upper_limit {45};
@@ -11,7 +11,7 @@ int AirConditioner::measure()
     return curr_temp;
 }
 
-int AirConditioner::activate(int curr_temp)
+int AirConditioner::activate(float curr_temp)
 {
     if (curr_temp >= -20 && curr_temp <= 45)
     {
